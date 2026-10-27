@@ -1,0 +1,44 @@
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+
+/* Tower Select Button */
+.tower-select-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  background-color: #1e293b;
+  border: 2px solid #334155;
+  border-radius: 0.75rem;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.tower-select-btn:hover {
+  border-color: #64748b;
+  color: #f8fafc;
+}
+
+.tower-select-btn.active {
+  border-color: #f59e0b;
+  background-color: #0f172a;
+  color: #f59e0b;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+/* Canvas Responsiveness */
+canvas {
+  max-width: 100%;
+  height: auto;
+}
