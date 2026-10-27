@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2D Tower Defense Game</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-950 font-sans text-slate-100 flex items-center justify-center min-h-screen p-2 sm:p-4 select-none">
+
+  <!-- Main Container -->
+  <div class="w-full max-w-4xl bg-slate-900 rounded-3xl shadow-2xl border-4 border-slate-800 overflow-hidden flex flex-col">
+    
+    <!-- Header / Top Bar -->
+    <header class="bg-slate-900/90 border-b border-slate-800 p-4 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center gap-6">
+        <!-- Health -->
+        <div class="flex items-center text-red-400 font-bold text-lg">
+          <i class="fa-solid fa-heart mr-2 text-xl"></i>
+          <span id="ui-health">20</span>
+        </div>
+        <!-- Gold / Coins -->
+        <div class="flex items-center text-amber-400 font-bold text-lg">
+          <i class="fa-solid fa-coins mr-2 text-xl"></i>
+          <span id="ui-gold">150</span>
+        </div>
+        <!-- Wave -->
+        <div class="flex items-center text-cyan-400 font-bold text-lg">
+          <i class="fa-solid fa-flag mr-2 text-xl"></i>
+          <span>Wave <span id="ui-wave">1</span></span>
+        </div>
+      </div>
+
+      <!-- Control Action -->
+      <div>
+        <button id="btn-next-wave" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2 rounded-xl transition shadow-lg active:scale-95 flex items-center gap-2">
+          <i class="fa-solid fa-play"></i> Mulai Gelombang
+        </button>
+      </div>
+    </header>
+
+    <!-- Game Viewport (Canvas) -->
+    <div class="relative bg-slate-950 flex justify-center items-center overflow-hidden">
+      <canvas id="gameCanvas" width="800" height="480" class="block bg-slate-950 cursor-pointer"></canvas>
+      
+      <!-- Overlay Game Over / Win -->
+      <div id="game-overlay" class="absolute inset-0 bg-slate-950/90 backdrop-blur flex-col items-center justify-center hidden z-20">
+        <h2 id="overlay-title" class="text-4xl font-black text-red-500 mb-2">GAME OVER</h2>
+        <p id="overlay-msg" class="text-slate-400 mb-6">Musuh berhasil menembus pertahanan Anda!</p>
+        <button id="btn-restart" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-6 py-3 rounded-xl transition active:scale-95">
+          Main Lagi <i class="fa-solid fa-rotate-right ml-2"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Bottom Controls / Shop -->
+    <footer class="bg-slate-900 border-t border-slate-800 p-4 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Pilih Menara:</span>
+        
+        <!-- Tower Option 1: Basic -->
+        <button data-type="basic" class="tower-select-btn active">
+          <div class="w-6 h-6 rounded-full bg-blue-500 mb-1 border-2 border-white"></div>
+          <span class="text-xs font-bold">Panah</span>
+          <span class="text-[10px] text-amber-400 font-bold">💰100</span>
+        </button>
+
+        <!-- Tower Option 2: Cannon -->
+        <button data-type="cannon" class="tower-select-btn">
+          <div class="w-6 h-6 rounded-full bg-red-500 mb-1 border-2 border-white"></div>
+          <span class="text-xs font-bold">Meriam</span>
+          <span class="text-[10px] text-amber-400 font-bold">💰175</span>
+        </button>
+      </div>
+
+      <div class="text-xs text-slate-500 italic">
+        *Klik area rumput (lingkaran) untuk memasang menara.
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
